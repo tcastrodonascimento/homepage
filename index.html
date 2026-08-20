@@ -9,103 +9,268 @@
 </head>
 
 <body>
+
     <div class="container">
+
         <header class="main-header">
             <h1>Painel do Piloto</h1>
         </header>
 
-        <!-- SEÇÃO 1: PAINEL PRINCIPAL -->
+
+        <!-- =====================================================
+             SEÇÃO 1 - PAINEL PRINCIPAL
+        ====================================================== -->
+
         <main class="secao-bloco">
-            <h2 class="titulo-secao-principal">Painel Principal</h2>
+
+            <h2 class="titulo-secao-principal">
+                Painel Principal
+            </h2>
+
+
             <div class="personagens">
-                <!-- Card Piloto -->
+
+
+                <!-- =================================================
+                     PILOTO
+                ================================================== -->
+
                 <div class="card">
+
                     <h2>Piloto</h2>
+
                     <div class="container-foto">
+
                         <div class="bolinha-nivel" contenteditable="true" id="lvl-piloto" oninput="salvarDados()">1
                         </div>
+
                         <img src="/img/personagem.png" alt="Piloto">
+
                     </div>
+
+
                     <div class="info">
-                        <label>Nome: <input type="text" id="nome-piloto" value="Nome do Piloto"
-                                oninput="salvarDados()"></label>
-                        <label>Nivel: <input type="text" id="dano-robo" value="+2" oninput="salvarDados()"></label>
+
+                        <label>
+                            Nome:
+
+                            <input type="text" id="nome-piloto" value="Nome do Piloto" oninput="salvarDados()">
+
+                        </label>
+
                     </div>
+
                 </div>
 
-                <!-- Card Robô Atual -->
+
+                <!-- =================================================
+                     ROBÔ ATUAL
+                ================================================== -->
+
                 <div class="card">
+
                     <h2>Robô Atual</h2>
+
+
                     <div class="container-foto">
+
                         <div class="bolinha-nivel" contenteditable="true" id="lvl-robo" oninput="salvarDados()">1</div>
+
                         <img src="/img/robo.png" alt="Robô">
+
                     </div>
+
+
                     <div class="info">
-                        <label>Defesa: <input type="text" id="def-robo" value="10" oninput="salvarDados()"></label>
-                        <label>Agilidade: <input type="text" id="agi-robo" value="5" oninput="salvarDados()"></label>
-                        <label>Vida: <input type="text" id="vid-robo" value="100" oninput="salvarDados()"></label>
-                        <label>Dano Extra: <input type="text" id="dano-robo" value="+2" oninput="salvarDados()"></label>
-                        <label>Nivel: <input type="text" id="dano-robo" value="+2" oninput="salvarDados()"></label>
+
+                        <label>
+                            Defesa:
+
+                            <input type="text" id="def-robo" value="10" oninput="salvarDados()">
+
+                        </label>
+
+
+                        <label>
+                            Agilidade:
+
+                            <input type="text" id="agi-robo" value="5" oninput="salvarDados()">
+
+                        </label>
+
+
+                        <label>
+                            Vida:
+
+                            <input type="text" id="vid-robo" value="100" oninput="salvarDados()">
+
+                        </label>
+
+
+                        <label>
+                            Dano Extra:
+
+                            <input type="text" id="dano-robo" value="+2" oninput="salvarDados()">
+
+                        </label>
+
+
+                        <label>
+                            Nível:
+
+                            <input type="text" id="nivel-robo" value="1" oninput="salvarDados()">
+
+                        </label>
+
                     </div>
+
                 </div>
+
             </div>
 
-            <!-- Tabela de Ataques -->
+
+            <!-- =====================================================
+                 TABELA DE ATAQUES
+            ====================================================== -->
+
             <div class="ataques">
-                <h2>Tabela de Ataques do Robô</h2>
+
+                <h2>
+                    Tabela de Ataques do Robô
+                </h2>
+
+
                 <table class="tabela-ataques">
+
                     <thead>
+
                         <tr>
+
                             <th>Carta</th>
                             <th>Ataque</th>
                             <th>Dano</th>
                             <th>Descrição</th>
+
                         </tr>
+
                     </thead>
+
+
                     <tbody id="corpo-tabela">
-                        <!-- Gerado via JS -->
+
+                        <!-- Gerado pelo JavaScript -->
+
                     </tbody>
+
                 </table>
+
             </div>
+
         </main>
 
-        <!-- SEÇÃO 2: VERSÕES ANTIGAS -->
+
+        <!-- =====================================================
+             SEÇÃO 2 - VERSÕES ANTIGAS
+        ====================================================== -->
+
         <section class="secao-bloco">
-            <h2 class="titulo-secao">Histórico de Versões do Robô</h2>
+
+            <h2 class="titulo-secao">
+                Histórico de Versões do Robô
+            </h2>
+
+
             <div class="botoes-acoes">
-                <button class="botao-add" onclick="adicionarCardRobo()">+ Adicionar Nova Versão</button>
+
+                <button class="botao-add" onclick="adicionarCardRobo()">
+                    + Adicionar Nova Versão
+                </button>
+
             </div>
+
+
             <div class="personagens" id="container-versoes">
-                <!-- Carregado via JS -->
+
+                <!-- Carregado pelo JavaScript -->
+
             </div>
+
         </section>
 
-        <!-- SEÇÃO 3: KAIJUS DERROTADOS -->
+
+        <!-- =====================================================
+             SEÇÃO 3 - KAIJUS
+        ====================================================== -->
+
         <section class="secao-bloco">
-            <h2 class="titulo-secao-kaiju">Registro de Kaijus Eliminados</h2>
+
+            <h2 class="titulo-secao-kaiju">
+                Registro de Kaijus Eliminados
+            </h2>
+
+
             <div class="botoes-acoes">
-                <button class="botao-add kaiju-btn" onclick="adicionarCardKaiju()">+ Registrar Novo Kaiju</button>
+
+                <button class="botao-add kaiju-btn" onclick="adicionarCardKaiju()">
+                    + Registrar Novo Kaiju
+                </button>
+
             </div>
+
+
             <div class="personagens" id="container-kaijus">
-                <!-- Carregado via JS -->
+
+                <!-- Carregado pelo JavaScript -->
+
             </div>
+
         </section>
 
-        <!-- SEÇÃO 4: MISSÕES COMPLETADAS -->
+
+        <!-- =====================================================
+             SEÇÃO 4 - MISSÕES
+        ====================================================== -->
+
         <section class="secao-bloco">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h2 class="titulo-secao-missao" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0;">Diário
-                    de Missões Concluídas</h2>
-                <button class="botao-add missao-btn" onclick="adicionarCardMissao()">+ Registrar Nova Missão</button>
+
+            <div style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 20px;
+                ">
+
+                <h2 class="titulo-secao-missao" style="
+                        margin-bottom: 0;
+                        border-bottom: none;
+                        padding-bottom: 0;
+                    ">
+                    Diário de Missões Concluídas
+                </h2>
+
+
+                <button class="botao-add missao-btn" onclick="adicionarCardMissao()">
+                    + Registrar Nova Missão
+                </button>
+
             </div>
+
 
             <div id="container-missoes">
-                <textarea id="caixa-missoes-texto" class="caixa-texto-missoes" oninput="salvarDados()"
-                    placeholder="Use hífens para criar seus tópicos de missões...&#10;- Missão 1: Detalhes&#10;- Missão 2: Detalhes"></textarea>
+
+                <textarea id="caixa-missoes-texto" class="caixa-texto-missoes" oninput="salvarDados()" placeholder="Use hífens para criar seus tópicos de missões...
+- Missão 1: Detalhes
+- Missão 2: Detalhes"></textarea>
+
             </div>
+
         </section>
+
     </div>
+
+
     <script src="script.js"></script>
+
 </body>
 
 </html>
