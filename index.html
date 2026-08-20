@@ -93,12 +93,15 @@
 
         <!-- SEÇÃO 4: MISSÕES COMPLETADAS -->
         <section class="secao-bloco">
-            <h2 class="titulo-secao-missao">Diário de Missões Concluídas</h2>
-            <div class="botoes-acoes">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 class="titulo-secao-missao" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0;">Diário
+                    de Missões Concluídas</h2>
                 <button class="botao-add missao-btn" onclick="adicionarCardMissao()">+ Registrar Nova Missão</button>
             </div>
-            <div class="personagens" id="container-missoes">
-                <!-- Carregado via JS -->
+
+            <div id="container-missoes">
+                <textarea id="caixa-missoes-texto" class="caixa-texto-missoes" oninput="salvarDados()"
+                    placeholder="Use hífens para criar seus tópicos de missões...&#10;- Missão 1: Detalhes&#10;- Missão 2: Detalhes"></textarea>
             </div>
         </section>
     </div>

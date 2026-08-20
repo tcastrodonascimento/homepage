@@ -10,7 +10,7 @@ function obterDadosEstruturados() {
         tabelaAtaques: cartasPadrao.map(c => ({ carta: c, ataque: '', dano: '', desc: '' })),
         versoesRobos: [{ modelo: 'Robô Mark I (V1)', def: '5', agi: '2', vid: '80', dano: '+1' }],
         kaijus: [{ nome: 'Leatherback', imagem: '/img/Kayjuporco.png', golpes: [] }],
-        missoes: Array.from({ length: 20 }, () => ({ nome: '', cod: '', recompensa: '', desc: '' }))
+        missoesTexto: '- Missão 1:\n- Missão 2:\n- Missão 3:'
     };
 }
 
@@ -69,19 +69,10 @@ function salvarDados() {
         });
     });
 
-    dados.missoes = [];
-    const linhasMissoes = document.querySelectorAll('#corpo-tabela-missoes tr');
-    if (linhasMissoes.length > 0) {
-        linhasMissoes.forEach(linha => {
-            dados.missoes.push({
-                nome: linha.querySelector('.m-nome').value,
-                cod: linha.querySelector('.m-cod').value,
-                recompensa: linha.querySelector('.m-rec').value,
-                desc: linha.querySelector('.m-desc').value
-            });
-        });
-    } else {
-        dados.missoes = obterDadosEstruturados().missoes;
+    // Salva o texto puro dos tópicos do diário de missões
+    const caixaMissoes = document.getElementById('caixa-missoes-texto');
+    if (caixaMissoes) {
+        dados.missoesTexto = caixaMissoes.value;
     }
 
     localStorage.setItem('painelPilotoDados', JSON.stringify(dados));
@@ -125,20 +116,10 @@ function carregarDados() {
         dados.kaijus.forEach(k => adicionarCardKaiju(k.nome, k.golpes, k.imagem));
     }
 
-    const tbodyMissoes = document.getElementById('corpo-tabela-missoes');
-    if (tbodyMissoes) {
-        tbodyMissoes.innerHTML = '';
-        for (let i = 0; i < 20; i++) {
-            const m = (dados.missoes && dados.missoes[i]) || { nome: '', cod: '', recompensa: '', desc: '' };
-            tbodyMissoes.innerHTML += `
-                <tr>
-                    <td><strong>${i + 1}</strong></td>
-                    <td><input type="text" class="m-nome" value="${m.nome || ''}" oninput="salvarDados()" placeholder="Nome da Missão..."></td>
-                    <td><input type="text" class="m-cod" value="${m.cod || ''}" oninput="salvarDados()" placeholder="Código..."></td>
-                    <td><input type="text" class="m-rec" value="${m.recompensa || ''}" oninput="salvarDados()" placeholder="Recompensa..."></td>
-                    <td><input type="text" class="m-desc" value="${m.desc || ''}" oninput="salvarDados()" placeholder="Resumo Operacional..."></td>
-                </tr>`;
-        }
+    // Carrega o texto puro dos tópicos no textarea
+    const caixaMissoes = document.getElementById('caixa-missoes-texto');
+    if (caixaMissoes) {
+        caixaMissoes.value = dados.missoesTexto || '';
     }
 }
 
@@ -204,17 +185,22 @@ function adicionarCardKaiju(nome = '', golpesExistentes = [], imagemSalva = '') 
 }
 
 function adicionarCardMissao() {
-    // Como agora são 20 linhas fixas pré-renderizadas, esta função rola a tela até a primeira linha vazia para facilitar o registro.
-    const primeiraLinhaVazia = Array.from(document.querySelectorAll('#corpo-tabela-missoes tr')).find(linha => {
-        return !linha.querySelector('.m-nome').value.trim();
-    });
+    const caixaMissoes = document.getElementById('caixa-missoes-texto');
+    if (!caixaMissoes) return;
+
+    caixaMissoes.focus();
     
-    if (primeiraLinhaVazia) {
-        primeiraLinhaVazia.querySelector('.m-nome').focus();
-        primeiraLinhaVazia.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // Adiciona uma nova linha com tópico caso o campo já tenha conteúdo
+    if (caixaMissoes.value.trim() !== '') {
+        if (!caixaMissoes.value.endsWith('\n')) {
+            caixaMissoes.value += '\n';
+        }
+        caixaMissoes.value += '- ';
     } else {
-        alert('Todas as 20 missões já possuem registros! Apague alguma para liberar espaço.');
+        caixaMissoes.value = '- ';
     }
+    
+    salvarDados();
 }
 
 function removerItem(btn) {

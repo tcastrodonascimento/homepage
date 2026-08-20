@@ -299,87 +299,46 @@ label input:focus {
     box-shadow: 0 0 10px rgba(255, 77, 77, 0.15);
 }
 
-/* --- NOVA ESTRUTURA PARA TABELA DE MISSÕES --- */
+/* --- NOVO DIÁRIO DE MISSÕES EM TÓPICOS (TEXTAREA) --- */
 #container-missoes {
     width: 100%;
-    display: block;
 }
 
-.tabela-container-missoes {
-    max-height: 480px;
-    /* Altura ideal para exibir várias linhas com rolagem vertical */
-    overflow-y: auto;
-    border-radius: 12px;
-    border: 1px solid rgba(46, 204, 113, 0.15);
+.caixa-texto-missoes {
+    width: 100%;
+    height: 300px;
     background: #181a21;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-}
-
-.tabela-missoes {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-}
-
-.tabela-missoes th {
-    background: rgba(46, 204, 113, 0.06);
-    color: #2ecc71;
-    padding: 14px;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid rgba(46, 204, 113, 0.12);
-    position: sticky;
-    top: 0;
-    /* Fixa o cabeçalho ao rolar a lista */
-    z-index: 2;
-}
-
-.tabela-missoes td {
-    padding: 8px 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    text-align: center;
-}
-
-.tabela-missoes input {
-    width: 100%;
-    background: transparent;
     color: #fff;
-    border: 1px solid transparent;
-    padding: 6px 10px;
-    border-radius: 4px;
+    border: 1px solid rgba(46, 204, 113, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+    font-family: 'Consolas', 'Courier New', Courier, monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    resize: vertical;
     outline: none;
-    transition: all 0.15s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
 }
 
-.tabela-missoes input:focus {
-    background: #1f222b;
-    border-color: rgba(46, 204, 113, 0.3);
+.caixa-texto-missoes:focus {
+    border-color: #2ecc71;
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.2);
+    background: #1d2029;
 }
 
-.tabela-missoes tbody tr:nth-child(even) {
-    background: rgba(255, 255, 255, 0.01);
+/* Customização de barra de rolagem da caixa de texto */
+.caixa-texto-missoes::-webkit-scrollbar {
+    width: 8px;
 }
-
-.tabela-missoes tbody tr:hover {
-    background: rgba(46, 204, 113, 0.02);
-}
-
-/* Customização da Barra de Rolagem */
-.tabela-container-missoes::-webkit-scrollbar {
-    width: 6px;
-}
-
-.tabela-container-missoes::-webkit-scrollbar-track {
+.caixa-texto-missoes::-webkit-scrollbar-track {
     background: transparent;
 }
-
-.tabela-container-missoes::-webkit-scrollbar-thumb {
+.caixa-texto-missoes::-webkit-scrollbar-thumb {
     background: rgba(46, 204, 113, 0.2);
-    border-radius: 10px;
+    border-radius: 4px;
 }
-
-.tabela-container-missoes::-webkit-scrollbar-thumb:hover {
+.caixa-texto-missoes::-webkit-scrollbar-thumb:hover {
     background: #2ecc71;
 }
 
