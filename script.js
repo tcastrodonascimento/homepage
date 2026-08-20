@@ -92,7 +92,7 @@ function criarDadosPadrao() {
 
                 nome: 'Leatherback',
 
-                imagem: '/img/Kayjuporco.png',
+                imagem: 'img/Kayjuporco.png',
 
                 golpes: []
 
